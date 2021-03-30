@@ -2,7 +2,7 @@ import logo from './logo.svg';
 import React from 'react';
 import { BrowserRouter } from 'react-router-dom';
 import './App.css';
-import Router from '../src/routes/Router';
+import Navbar from './routes/Navbar';
 import { ProvideUser } from './ContextApis/ProvideUser';
 
 function App() {
@@ -10,7 +10,7 @@ function App() {
     <div className="App">
       <ProvideUser>
         <BrowserRouter>
-          <Router />
+          <Navbar/>
         </BrowserRouter>
       </ProvideUser>
     </div>
