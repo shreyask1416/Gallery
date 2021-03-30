@@ -7,8 +7,9 @@ import styles from './Home.module.scss';
 const Home = ({ search = () => { }, }) => {
   const [imgs, setImgg] = React.useState([]);
   const [text, setText] = useState('');
+  //To get the banner image
   const getBanner = () => {
-    fetch('https://api.pexels.com/v1/curated?per_page=1', {
+    fetch('https://api.pexels.com/v1/curated?per_page=2', {
       headers: {
         Authorization:
           '563492ad6f91700001000001935ceb59486643be884e6b248f72ecd5',
@@ -18,7 +19,7 @@ const Home = ({ search = () => { }, }) => {
         return resp.json();
       })
       .then((data) => {
-        setImgg(data.photos[0].src.landscape);
+        setImgg(data.photos[1].src.landscape);
       });
   };
 
@@ -27,8 +28,9 @@ const Home = ({ search = () => { }, }) => {
   }, []);
   const [show, setShow] = useState(false);
   let history = useHistory();
-  const changeBackground = () => {
 
+  //scrolling event
+  const changeBackground = () => {
     if (window.scrollY > 15) {
       setShow(true);
     } else if (window.scrollY < 200) {
@@ -41,27 +43,13 @@ const Home = ({ search = () => { }, }) => {
 
   }, []);
   window.addEventListener("scroll", changeBackground);
-
-  const [perPage, setPerPage] = useState('');
   const location = useLocation();
   const path = location.pathname.split('/');
-
-  function handleChange(event) {
-    const searchvalue = event.target.value;
-    search(searchvalue);
-  }
-  function noOfPics(event) {
-    const perPage = event.target.value;
-    setPerPage(perPage);
-  }
-
-  function handleSubmitSmall(event) {
+  function handleSubmits(event) {
     event.preventDefault();
     history.push(path[1] === 'PhotoDetails' ? '/' : '/videos');
     search(text);
   }
-
-
   function handleSubmit(event) {
     event.preventDefault();
     search(text);
@@ -73,7 +61,7 @@ const Home = ({ search = () => { }, }) => {
       {show || Value ? (
         <div className={show || Value ? styles.mask : styles.maskHide}>
           <img className={styles.logos} src={DarkLogo} />
-          <form className={styles.bgSmall} onSubmit={handleSubmitSmall}>
+          <form className={styles.bgSmall} onSubmit={handleSubmits}>
             <input
               type="text"
               placeholder="Search photos, videos, artists"
@@ -81,7 +69,7 @@ const Home = ({ search = () => { }, }) => {
                 setText(e.target.value);
               }}
             ></input>
-            <div className={styles.bgsSmall} onClick={() => handleSubmitSmall}>
+            <div className={styles.bgsSmall} onClick={() => handleSubmits}>
               <span className={styles.tagSmall}>SEARCH</span>
             </div>
           </form>
@@ -95,7 +83,6 @@ const Home = ({ search = () => { }, }) => {
 
           }}
           className={show === false || Value === false ? styles.Banner : styles.BannerHide}
-        //onScroll={()=>{setShow(true);changeBackground();}}
         >
           <img className={styles.logos} src={logo} />
           <h1>Discover the world’s best photos & videos</h1>

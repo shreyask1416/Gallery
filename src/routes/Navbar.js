@@ -41,7 +41,7 @@ const Navbar = () => {
             Videos
         </NavLink>
           <NavLink
-            style={{ marginLeft: '39vw' }}
+            style={{ marginLeft: '38vw' }}
             className={styles.inactive}
             activeClassName={styles.active}
             to="/Favourites"

@@ -13,15 +13,7 @@ const Favourites = ({ ...props }) => {
   useEffect(() => {
     localStorage.setItem('Fav', JSON.stringify([...fav]));
   }, [fav]);
-  //let favo=JSON.parse(localStorage.getItem('Fav'))||'{}';
-// let image = photo.filter(
-//   (ele, ind) =>
-//     ind ===
-//     photo.findIndex(
-//       (elem) =>
-//         elem.id === ele.id 
-//     )
-// );
+
 let image=JSON.parse(localStorage.getItem('photo'))||'{}';
 
 useEffect(() => {

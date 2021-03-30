@@ -9,16 +9,13 @@
   margin-right: 24vw;
   grid-column-gap: 20px;
   grid-row-gap: 20px;
-  //grid-template-columns: repeat(auto-fill, 10%);
   grid-template-columns: 1fr 1fr 1fr 1fr;
-  //grid-template-columns:  70px;
-  //padding: 10px;
 
   .Card {
     position: relative;
 
     img {
-      width: 218px;
+      width: 205px;
       height: 165px;
     }
     .OvalImg {
