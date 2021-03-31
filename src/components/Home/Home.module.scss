@@ -149,3 +149,71 @@
     visibility: hidden;
   }
 }
+@media (max-width:1000px){
+  .Home {
+   .Banner{
+    .bg {
+      width: 530px;
+      margin-left: 20vw;
+      input {
+        width: 40vw;
+        
+      }
+      .bgsMask {
+        margin-left: 20vw;
+      }
+    }
+   }
+   .mask {
+    .logos {
+      margin-left: 15vw;
+    }
+    .bgSmall{
+      margin-left: 50vw;
+      width: 320px;
+      input {
+        margin-left: 5px;
+        width: 30vw;
+      }
+      .bgsSmall {
+        width: 84px;
+      }
+    }
+  }
+  }
+}
+@media (max-width:700px){
+  .Home {
+    .Banner{
+     .bg {
+      
+       width: 430px;
+       margin-left: 5vw;
+       input {
+         width: 53vw;
+         
+       }
+       .bgsMask {
+         width: 87px;
+         margin-left: 15vw;
+       }
+     }
+    }
+    .mask {
+      .logos {
+        margin-left: 5vw;
+      }
+      .bgSmall{
+        margin-left: 40vw;
+        width: 280px;
+        input {
+        
+          width: 42vw;
+        }
+        .bgsSmall {
+          width: 64px;
+        }
+      }
+    }
+   }
+}
