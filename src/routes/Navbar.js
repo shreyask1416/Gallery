@@ -20,29 +20,24 @@ const Navbar = () => {
   return (
     <div className={styles.Router}>
       <Home search={(value) => { value ? setSearch(value) : setSearch('animal'); }} />
-      {console.log(search)}
-      {console.log(path[1] !== 'PhotoDetails' || path[1] !== 'VideoPlay')}
       {path[1] === 'PhotoDetails' || path[1] === 'VideoPlay' ? null : (
         <div className={styles.NavBar}>
           <NavLink
-            style={{ marginRight: '5vw', marginLeft: '-10px' }}
-            className={styles.inactive}
+            className={styles.home}
             exact activeClassName={styles.active}
             to="/"
           >
             Photos
         </NavLink>
           <NavLink
-            style={{ marginRight: '5vw' }}
-            className={styles.inactive}
+            className={styles.vid}
             activeClassName={styles.active}
             to="/videos"
           >
             Videos
         </NavLink>
           <NavLink
-            style={{ marginLeft: '38vw' }}
-            className={styles.inactive}
+            className={styles.favo}
             activeClassName={styles.active}
             to="/Favourites"
           >

@@ -5,13 +5,11 @@ import styles from './Videos.module.scss';
 import {useHistory} from 'react-router-dom';
 import playButton from '../../assets/ShapeCopy6.png';
 import InfiniteScroll from 'react-infinite-scroll-component';
-import { AiOutlineHeart, AiFillHeart } from 'react-icons/ai';
 import { useUser } from '../../ContextApis/ProvideUser';
 import filledHeart from '../../assets/Icon-heart-deselect.png';
 import outlineHeart from '../../assets/video-favorite.png';
 
 const Videos = ({ search }) => {
-  //const [search, SetSearch] = useState('animal');
   const [nextLink, SetNextLink] = useState('');
   const [heart, setHeart] = useState(false);
   const { fav, setFav, video, setVideo,vid,SetVid,setSearch } = useUser();
@@ -43,14 +41,6 @@ const Videos = ({ search }) => {
       })
       .then((data) => {
         let val=[];
-        // let Vido = vid.filter(
-        //   (ele, ind) =>
-        //     ind ===
-        //     vid.findIndex(
-        //       (elem) =>
-        //         elem.id === ele.id 
-        //     )
-        // );
         localStorage.setItem(search+' video', JSON.stringify([...val,...data.videos]));
         localStorage.setItem('video', JSON.stringify([...vid,...data.videos]));
         localStorage.setItem(search+' nextVideo', JSON.stringify(data.page));
@@ -132,7 +122,6 @@ const Videos = ({ search }) => {
       >
         <div className={styles.column}>
           {video.map((item, index) => {
-            //console.log(Vido);
             return (
               <div className={styles.Card} key={index}>
                 <img src={item.image} 

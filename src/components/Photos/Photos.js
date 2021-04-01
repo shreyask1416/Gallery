@@ -1,22 +1,16 @@
 import React from 'react';
-
 import styles from './Photos.module.scss';
 import oval from '../../assets/Group 2/Oval Copy.png';
 import { useEffect, useState } from 'react';
 import InfiniteScroll from 'react-infinite-scroll-component';
-//import { AiOutlineHeart, AiFillHeart } from 'react-icons/ai';
 import { useUser } from '../../ContextApis/ProvideUser';
 import {useHistory} from 'react-router-dom';
 import filledHeart from '../../assets/Icon-heart-deselect.png';
 import outlineHeart from '../../assets/video-favorite.png';
-
 const Photos = ({ search }) => {
-  
-  
-  const [nextLink, SetNextLink] = useState('');
+   const [nextLink, SetNextLink] = useState('');
   const [heart, setHeart] = useState(false);
   const { fav, setFav, img, setImg ,photo,setPhoto,setSearch} = useUser();
-  //const [favo,setFavo]=useState([]);
   let history=useHistory();
   let image = img.filter(
     (ele, ind) =>
@@ -29,7 +23,6 @@ const Photos = ({ search }) => {
 
   const url = 'https://api.pexels.com/v1/search?query=';
   const getImg = () => {
-    console.log(search);
     setSearch(search);
     if(!localStorage.getItem(search+' photo'))
     {
@@ -45,14 +38,6 @@ const Photos = ({ search }) => {
       })
       .then((data) => {
         let val=[];
-        // let Photo = photo.filter(
-        //   (ele, ind) =>
-        //     ind ===
-        //     photo.findIndex(
-        //       (elem) =>
-        //         elem.id === ele.id 
-        //     )
-        // );
         localStorage.setItem(search+' photo', JSON.stringify([...val,...data.photos]));
         localStorage.setItem('photo', JSON.stringify([...photo,...data.photos]));
         localStorage.setItem(search+' next', JSON.stringify(data.next_page));
@@ -113,7 +98,7 @@ const Photos = ({ search }) => {
     }
     else{
 
-      console.log("elsePart",nextLink);
+      console.log("shreya");
     }
   };
   useEffect(() => {
@@ -132,7 +117,7 @@ const Photos = ({ search }) => {
         dataLength={img}
         next={newUrl}
         hasMore={true}
-        loader={<h4>Loading...</h4>}
+        loader={<p>Loading</p>}
       >
         <div className={styles.column}>
           {image.map((item, index) => {
@@ -154,14 +139,7 @@ const Photos = ({ search }) => {
                                     )
                                   : setFav((fav) => [...fav, item.id]):null;
                               }
-                              
-                    // {
-                    //   favo.find((ele) => {
-                    //     return ele === item.id;
-                    //   })
-                    //     ? localStorage.setItem('Fav', JSON.stringify(favo?favo.filter((ele) => ele !== item.id):[]))
-                    //     : localStorage.setItem('Fav', JSON.stringify([...favo, item.id]));
-                    // }
+
                     setHeart(!heart);
                   }}
                 >

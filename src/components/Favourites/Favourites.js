@@ -7,7 +7,7 @@ import outlineHeart from '../../assets/video-favorite.png';
 import oval from '../../assets/Group 2/Oval Copy.png';
 import playButton from '../../assets/ShapeCopy6.png';
 
-const Favourites = ({ ...props }) => {
+const Favourites = () => {
   const { fav, setFav, img, video,photo,vid ,search,favVideo, setFavVideo} = useUser();
   let history=useHistory();
   useEffect(() => {
